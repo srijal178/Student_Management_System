@@ -67,7 +67,7 @@ class StudentManager:
             print("🗑 Student deleted successfully.")
         else:
             print("❌ Cannot delete. Student not found.")
-
+# save data
     def save_data(self):
         with open(self.filepath, 'w') as f:
             json.dump([student.to_dict() for student in self.students], f, indent=4)
