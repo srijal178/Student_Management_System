@@ -72,7 +72,7 @@ class StudentManager:
         with open(self.filepath, 'w') as f:
             json.dump([student.to_dict() for student in self.students], f, indent=4)
         print("💾 Data saved.")
-
+# load datas
     def load_data(self):
         if not os.path.exists(self.filepath):
             return
