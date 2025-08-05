@@ -45,7 +45,8 @@ class StudentManager:
                 return student
         print("❌ Student not found.")
         return None
-
+    
+    # update student
     def update_student(self, roll_no, name=None, age=None, grade=None):
         student = self.search_student(roll_no)
         if student:
