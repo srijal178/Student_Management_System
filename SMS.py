@@ -2,7 +2,7 @@ import json
 import os
 
 class Student:
-    def _init_(self, roll_no, name, age, grade):
+    def __init__(self, roll_no, name, age, grade):
         self.roll_no = roll_no
         self.name = name
         self.age = age
@@ -20,8 +20,9 @@ class Student:
     def from_dict(data):
         return Student(data['roll_no'], data['name'], data['age'], data['grade'])
 
+
 class StudentManager:
-    def _init_(self, filepath='students.json'):
+    def __init__(self, filepath='students.json'):
         self.filepath = filepath
         self.students = []
         self.load_data()
@@ -45,8 +46,7 @@ class StudentManager:
                 return student
         print("❌ Student not found.")
         return None
-    
-    # update students
+
     def update_student(self, roll_no, name=None, age=None, grade=None):
         student = self.search_student(roll_no)
         if student:
@@ -67,12 +67,12 @@ class StudentManager:
             print("🗑 Student deleted successfully.")
         else:
             print("❌ Cannot delete. Student not found.")
-# save data
+
     def save_data(self):
         with open(self.filepath, 'w') as f:
             json.dump([student.to_dict() for student in self.students], f, indent=4)
         print("💾 Data saved.")
-# load datas
+
     def load_data(self):
         if not os.path.exists(self.filepath):
             return
@@ -83,6 +83,7 @@ class StudentManager:
                 print("📂 Data loaded.")
             except json.JSONDecodeError:
                 print("⚠ Error loading data. Starting fresh.")
+
 
 def main():
     manager = StudentManager()
@@ -132,5 +133,5 @@ def main():
         else:
             print("❌ Invalid choice. Please try again.")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
